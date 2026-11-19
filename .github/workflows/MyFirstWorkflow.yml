@@ -3,44 +3,44 @@
 name: My First Workflow
 
 # Controls when the workflow will run
-on:
-  schedule: 
-    - cron: '0 0 */3 */3 *'
+  on:
+    schedule: 
+      - cron: '0 0 */3 */3 *'
     
-  # Triggers the workflow on push request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
+    # Triggers the workflow on push request events but only for the "main" branch
+    push:
+      branches: [ "main" ]
 
   # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-    inputs:
-      homedrive:
-        description: 'The home drive on the machine'
-        required: true
-      logLevel:
-        description: 'Log level'
-        default: 'warning'
-        type: choice # upon setting a variable as choice, you 
-        options:
-          - info
-          - warning
-          - debug
-      tag:
-        description: 'Apply tag after successfull test run'
-        required: true
-        type: boolean
-      environment:
-        description: 'Environment to run tests against'
-        type: environment
-        required: true
+    workflow_dispatch:
+      inputs:
+        homedrive:
+          description: 'The home drive on the machine'
+          required: true
+        logLevel:
+          description: 'Log level'
+          default: 'warning'
+          type: choice # upon setting a variable as choice, you 
+          options:
+            - info
+            - warning
+            - debug
+        tag:
+          description: 'Apply tag after successfull test run'
+          required: true
+          type: boolean
+        environment:
+          description: 'Environment to run tests against'
+          type: environment
+          required: true
 
-        # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+          # A workflow run is made up of one or more jobs that can run sequentially or in parallel
   jobs:
-  MyFirstJob:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
+    MyFirstJob:
+      # The type of runner that the job will run on
+      runs-on: ubuntu-latest
+      # Steps represent a sequence of tasks that will be executed as part of the job
+      steps:
         - run: echo "Hello, world!"
 
         - name: checkout
